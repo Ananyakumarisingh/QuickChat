@@ -1,11 +1,10 @@
 import React from 'react'
 import { Container, Box, Text, Tabs, TabList, TabPanel, Tab, TabPanels } from "@chakra-ui/react";
-import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import Login from "../components/Authentication/Login";
 
 const HomePage = () => {
-  return (
-    <Container maxW="xl" centerContent>
+  return <Container maxW="xl" centerContent>
       <Box
         d="flex"
         justifyContent="center"
@@ -18,7 +17,7 @@ const HomePage = () => {
         textAlign="center"
       >
         <Text fontSize="4xl" color="black" fontFamily="Work sans">
-          Talk-A-Tive
+          QuickChat
         </Text>
       </Box>
       <Box
@@ -43,8 +42,7 @@ const HomePage = () => {
           </TabPanels>
         </Tabs>
       </Box>
-    </Container>
-  );
+    </Container>;
 };
 
 export default HomePage
