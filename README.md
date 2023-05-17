@@ -3,17 +3,11 @@
 - __Deployed Backend__ = https://
 - __Deployed Webite__ = https://
 
-## 🏷️ What is __QuickChat__?
-QuickChat is a Full Stack Chatting App.
-Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
-
 ---
-
 <br/>
-
-## 🏷️ Special Features of QuickChat :-
-
-- 
+## 🏷️ What is __QuickChat__?
+__QuickChat__ is a Full Stack Chatting App.
+Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
 
 ---
 
@@ -21,23 +15,37 @@ Uses Socket.io for real time communication and stores user details in encrypted 
 
 ## 🏷️ __Tech Stack Used__ :-
 
-  > ## Frontend
+__Frontend__:
 - HTML5
 - CSS3
 - JavaScript
 - React.js
-> ## Backend
+
+__Backend__:
 - Node.js
 - Express.js
 - Socket.io
-- MongoDb
 
-**Database:** Mongo DB
+ **Database:** Mongo DB
 
 <br/>
 
+## 🏷️ Special Features of QuickChat :-
 
-## __More Project Details__ :-
+-   
+<!-- 
+### Authenticaton
+### Real Time Chatting with Typing indicators
+### One to One chat
+### Search Users
+### Create Group Chats
+### Notifications 
+### Add or Remove users from group
+### View Other user Profile -->
+
+
+---
+
 <br/>
 
 ## 🏷️ __API Routes__ :
@@ -48,15 +56,6 @@ Uses Socket.io for real time communication and stores user details in encrypted 
 | POST | /api/login | This endpoint should allow to login after comparing the user's credentails. | 201 |
 
 
-
-
-
-# Talk-A-Tive
-
-Talk-a-tive is a Full Stack Chatting App.
-Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
-
----
 ## Run Locally
 
 Clone the project
@@ -85,7 +84,7 @@ Install dependencies
 Start the server
 
 ```bash
-  npm start
+  npm run start 
 ```
 Start the Client
 
@@ -95,19 +94,7 @@ Start the Client
   npm start
 ```
 
-  
-# Features
-<!-- 
-### Authenticaton
-### Real Time Chatting with Typing indicators
-### One to One chat
-### Search Users
-### Create Group Chats
-### Notifications 
-### Add or Remove users from group
-### View Other user Profile -->
-
-## Made By
+## Made By :
 - [@Ananyakumarisingh](https://github.com/Ananyakumarisingh)
 
   
