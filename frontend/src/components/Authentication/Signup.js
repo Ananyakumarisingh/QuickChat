@@ -1,5 +1,5 @@
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
-import { Button, Input, InputGroup,  InputRightElement } from "@chakra-ui/react";
+import { Button, Input, InputGroup, InputRightElement, useToast } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/layout";
 import React, { useState } from "react";
 
@@ -10,14 +10,60 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [pic, setPic] = useState();
-  
+  const [picLoading, setPicLoading] = useState(false);
+  const toast = useToast()
+
+
+
   const handleClick = () => setShow(!show);
   const submitHandler = () => {
 
   };
 
   const postDetails = (pics) => {
-
+    setPicLoading(true);
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    console.log(pics);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "QuickChat");
+      data.append("cloud_name", "ananyasingh");
+      fetch("https://api.cloudinary.com/v1_1/ananyasingh/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+          // console.log(data)
+          console.log(data.url.toString());
+          setPicLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setPicLoading(false);
+        });
+    } else {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setPicLoading(false);
+      return;
+    }
   };
 
   return (
@@ -77,7 +123,6 @@ const Signup = () => {
       <FormControl id="pic">
         <FormLabel>Upload your picture</FormLabel>
         <Input 
-          value={pic}
           type="file"
           p={1.5}
           accept="image/*"
@@ -85,7 +130,7 @@ const Signup = () => {
         />
       </FormControl>
 
-      <Button colorScheme="blue" width="100%" onClick={submitHandler}>
+      <Button colorScheme="blue" width="100%" onClick={submitHandler} isLoading={picLoading}>
         Sign Up
       </Button>
     </VStack>
