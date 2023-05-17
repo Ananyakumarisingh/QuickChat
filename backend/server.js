@@ -6,6 +6,7 @@ const PORT = process.env.PORT;
 const cors = require("cors");
 const {chats} = require("./data/data")
 const colors = require("colors");
+const { notFound, errorHandler } = require("./middlewares/error.middleware")
 
 const app = express();
 app.use(
@@ -26,7 +27,7 @@ app.get("/api/chat", (req, res) => {
 
 app.use('/api/user', userRouter);
 app.use(notFound);
-app.use(errorHanlder);
+app.use(errorHandler);
 
 
 app.listen(PORT, async () => {

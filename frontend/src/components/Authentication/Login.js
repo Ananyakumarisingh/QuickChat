@@ -53,6 +53,12 @@ const Login = () => {
       >
         Get Guest User Credentials
       </Button>
+      <Button
+        colorScheme="teal"
+        width="100%"
+      >
+        Forget Password ?
+      </Button>
     </VStack>
   );
 };
