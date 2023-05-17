@@ -25,6 +25,9 @@ app.get("/api/chat", (req, res) => {
 });
 
 app.use('/api/user', userRouter);
+app.use(notFound);
+app.use(errorHanlder);
+
 
 app.listen(PORT, async () => {
   try {
