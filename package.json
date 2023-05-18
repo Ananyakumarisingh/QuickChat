@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Ananyakumarisingh/ChatApp#readme",
   "dependencies": {
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",

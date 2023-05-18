@@ -2,6 +2,10 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Button, Input, InputGroup, InputRightElement, useToast } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/layout";
 import React, { useState } from "react";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
+
+
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -10,18 +14,62 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [pic, setPic] = useState();
-  const [picLoading, setPicLoading] = useState(false);
-  const toast = useToast()
-
-
+  const [loding, setLoading] = useState(false);
+  const toast = useToast();
+  const history = useHistory();
 
   const handleClick = () => setShow(!show);
-  const submitHandler = () => {
 
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!name || !email || !password || !confirmPassword) {
+      toast({
+        title: "Please fill all the feilds.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast({
+        title: "Password and Confirm Password should be same",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/josn",
+        }
+      }
+
+      const { data } = await axios.post("/api/user",{name, email, password, pic}, config);
+      toast({
+        title: "Registration Successful !",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      setLoading(false);
+      history.push('/chats')
+    } catch (error) {
+      
+    }
   };
 
   const postDetails = (pics) => {
-    setPicLoading(true);
+    setLoading(true);
     if (pics === undefined) {
       toast({
         title: "Please Select an Image!",
@@ -47,11 +95,11 @@ const Signup = () => {
           setPic(data.url.toString());
           // console.log(data)
           console.log(data.url.toString());
-          setPicLoading(false);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
-          setPicLoading(false);
+          setLoading(false);
         });
     } else {
       toast({
@@ -61,7 +109,7 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      setPicLoading(false);
+      setLoading(false);
       return;
     }
   };
@@ -130,7 +178,7 @@ const Signup = () => {
         />
       </FormControl>
 
-      <Button colorScheme="blue" width="100%" onClick={submitHandler} isLoading={picLoading}>
+      <Button colorScheme="blue" width="100%" onClick={submitHandler} isLoading={loding}>
         Sign Up
       </Button>
     </VStack>

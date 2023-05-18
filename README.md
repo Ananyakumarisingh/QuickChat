@@ -30,12 +30,17 @@ __Backend__:
 
 <br/>
 
-## 🏷️ Special Features of QuickChat :-
+## 🏷️ __Special Features of QuickChat__ :-
 
--   
+- ### __Authenticaton__
+<div style="display: flex; justify-content: space-evenly">
+  <img width="48%" src="./screenshot/login.png" alt="Login"/>
+  <img width="48%" src="./screenshot/signup.png" alt="Signup"/>
+</div>
+
+<!-- - ### __Real Time Chatting with Typing indicators__ -->
+
 <!-- 
-### Authenticaton
-### Real Time Chatting with Typing indicators
 ### One to One chat
 ### Search Users
 ### Create Group Chats
