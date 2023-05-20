@@ -5,9 +5,10 @@
 
 ---
 <br/>
-## 🏷️ What is __QuickChat__?
-__QuickChat__ is a Full Stack Chatting App.
-Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
+
+## 🏷️ What is __QuickChat__ ?
+
+__QuickChat__ is a Full Stack Chatting App. Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
 
 ---
 
