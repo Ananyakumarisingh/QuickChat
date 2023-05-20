@@ -119,7 +119,6 @@ const Signup = () => {
       <FormControl id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
         <Input
-          value={name}
           placeholder="Enter your name"
           onChange={(e) => setName(e.target.value)}
         />
@@ -128,7 +127,6 @@ const Signup = () => {
       <FormControl id="email" isRequired>
         <FormLabel>Email</FormLabel>
         <Input
-          value={email}
           placeholder="Enter your Email"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -139,7 +137,6 @@ const Signup = () => {
         <FormLabel>Password</FormLabel>
         <InputGroup>
           <Input
-            value={password}
             type={show ? "text" : "password"}
             placeholder="Enter password"
             onChange={(e) => setPassword(e.target.value)}
@@ -156,7 +153,6 @@ const Signup = () => {
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup>
           <Input
-            value={confirmPassword}
             type={show ? "text" : "password"}
             placeholder="Confirm password"
             onChange={(e) => setConfirmPassword(e.target.value)}

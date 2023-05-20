@@ -32,21 +32,21 @@ __Backend__:
 
 ## 🏷️ __Special Features of QuickChat__ :-
 
-- ### __Authenticaton__
+- ### Authenticaton
 <div style="display: flex; justify-content: space-evenly">
   <img width="48%" src="./screenshot/login.png" alt="Login"/>
   <img width="48%" src="./screenshot/signup.png" alt="Signup"/>
 </div>
 
-<!-- - ### __Real Time Chatting with Typing indicators__ -->
-
 <!-- 
-### One to One chat
-### Search Users
-### Create Group Chats
-### Notifications 
-### Add or Remove users from group
-### View Other user Profile -->
+- ### Real Time Chatting with Typing indicators
+- ### One to One chat
+- ### Search Users
+- ### Create Group Chats
+- ### Notifications 
+- ### Add or Remove users from group
+- ### View Other user Profile 
+-->
 
 
 ---
