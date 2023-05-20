@@ -24,7 +24,7 @@ const Signup = () => {
     setLoading(true);
     if (!name || !email || !password || !confirmPassword) {
       toast({
-        title: "Please fill all the feilds.",
+        title: "Please Fill all the Feilds",
         status: "warning",
         duration: 5000,
         isClosable: true,
@@ -35,36 +35,52 @@ const Signup = () => {
     }
     if (password !== confirmPassword) {
       toast({
-        title: "Password and Confirm Password should be same",
+        title: "Passwords Do Not Match",
         status: "warning",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
       return;
     }
-
+    console.log(name, email, password, pic);
     try {
       const config = {
         headers: {
-          "Content-type": "application/josn",
-        }
-      }
-
-      const { data } = await axios.post("/api/user",{name, email, password, pic}, config);
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/user/register",
+        {
+          name,
+          email,
+          password,
+          pic,
+        },
+        config
+      );
+      console.log(data);
       toast({
-        title: "Registration Successful !",
+        title: "Registration Successful",
         status: "success",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
-      localStorage.setItem('userInfo', JSON.stringify(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push('/chats')
+      history.push("/chats");
     } catch (error) {
-      
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
     }
   };
 
