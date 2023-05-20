@@ -14,7 +14,7 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [pic, setPic] = useState();
-  const [loding, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
 
@@ -190,7 +190,7 @@ const Signup = () => {
         />
       </FormControl>
 
-      <Button colorScheme="blue" width="100%" onClick={submitHandler} isLoading={loding}>
+      <Button colorScheme="blue" width="100%" onClick={submitHandler} isLoading={loading}>
         Sign Up
       </Button>
     </VStack>
