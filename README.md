@@ -60,6 +60,14 @@ __Backend__:
 | --- | --- | --- | --- |
 | POST | /api/register | This endpoint should allows to register. Hash the password and store. | 201 |
 | POST | /api/login | This endpoint should allow to login after comparing the user's credentails. | 201 |
+| GET | /api/user | This endpoint should allow to search other user's. | 200 |
+| POST | /api/chats/ | This endpoint should allow to post messages. | 201 |
+| GET | /api/chats/ | This endpoint should allow to get the chats. | 200 |
+| POST | /api/chats/group | This endpoint should allow to create a group. | 201 |
+| PUT | /api/chats/rename | This endpoint should allow to create groups. | 202 |
+| PUT | /api/chats/groupremove | This endpoint should allow to remove someone from the group. | 202 |
+| PUT | /api/chats/groupadd | This endpoint should allow to add someone to the group. | 202 |
+
 
 
 ## Run Locally

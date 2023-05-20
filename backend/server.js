@@ -1,6 +1,7 @@
 const express = require("express");
 const connectMongo = require("./config/db");
 const userRouter = require("./routes/user.route")
+const chatRouter = require("./routes/chat.route")
 require("dotenv").config();
 const PORT = process.env.PORT;
 const cors = require("cors");
@@ -26,6 +27,7 @@ app.get("/api/chat", (req, res) => {
 });
 
 app.use('/api/user', userRouter);
+app.use('/api/chat', chatRouter);
 app.use(notFound);
 app.use(errorHandler);
 
