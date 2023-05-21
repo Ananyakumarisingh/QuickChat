@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const ChatModel = require("../models/chat.model");
 const UserModel = require("../models/user.model");
-const { json } = require("express");
 
 
 const accessChat = asyncHandler(async (req, res) => {
@@ -52,7 +51,7 @@ const accessChat = asyncHandler(async (req, res) => {
 
 const fetchChats = asyncHandler( async(req, res) => {
     try {
-        ChatModel.find({ users: { $elemMatch: { $eq: req.user._id } } }).populate("user", "-password").populate("groupAdmin", "-password").populate("latestMessage").sort({updatedAT: -1}).then( async (result) => {
+        ChatModel.find({ users: { $elemMatch: { $eq: req.user._id } } }).populate("users", "-password").populate("groupAdmin", "-password").populate("latestMessage").sort({updatedAT: -1}).then( async (result) => {
             result = await UserModel.populate(isChat, {
                 path: "latestMessage.sender",
                 select: "name pic email"
@@ -67,12 +66,11 @@ const fetchChats = asyncHandler( async(req, res) => {
 
 
 const createGroupChat = asyncHandler( async(req, res) => {
-    const payload = req.body;
-    if ( payload.users || !payload.name ) {
+    if ( !req.body.users || !req.body.name ) {
         return res.status(400).send({message: "Please fill all the feilds"});
     }
     
-    var users = JSON.parse(payload.user);
+    var users = JSON.parse(req.body.users);
     if (users.length < 2) {
         res.status(400).send("More than 2 users are required to form a group chat");
     }
@@ -80,8 +78,8 @@ const createGroupChat = asyncHandler( async(req, res) => {
 
     try {
         const groupChat = await ChatModel.create({
+            chatName: req.body.name,
             users: users,
-            chatName: payload.name,
             isGroupChat: true,
             groupAdmin: req.user,
         });
@@ -90,7 +88,7 @@ const createGroupChat = asyncHandler( async(req, res) => {
         })
         .populate("users", "-password")
         .populate("groupAdmin", "-password");
-        res.status(200).json(FullGroupChat);
+        res.status(201).json(FullGroupChat);
     } catch (error) {
         res.status(400);
         throw new Error(error.message);

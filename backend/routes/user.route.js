@@ -1,13 +1,13 @@
 const express = require("express");
 const { registerUser, authUser, allUsers } = require("../controller/user.controller");
-// const { protect } = require("../middlewares/auth.middleware");
+const { protect } = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 // ! REGISTER
-router.route("/register").post(registerUser).get( allUsers);
+router.route("/register").post(registerUser);
 
 // ! Search other users
-// router.route("/").get(protect, allUsers);
+router.route("/").get(protect, allUsers);
 
 // ! LOGIN
 router.post("/login", authUser);
