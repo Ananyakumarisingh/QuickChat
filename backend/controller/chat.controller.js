@@ -103,16 +103,48 @@ const renameGroup = asyncHandler( async(req, res) => {
     res.status(404);
     throw new Error("Chat Not Found");
   } else {
-    res.json(updatedChat);
+    res.status(202).json(updatedChat);
   }
 });
 
 
-const removeFromGroup = asyncHandler(async (req, res) => {});
+const addToGroup = asyncHandler(async (req, res) => {
+  const { chatId, userId } = req.body;
+  const added = ChatModel.findByIdAndUpdate(
+    chatId,
+    { $push: { users: userId } },
+    { new: true }
+  )
+    .populate("users", "-password")
+    .populate("groupAdmin", "-password");
+
+  if (!added) {
+    res.status(404);
+    throw new Error("Chat Not Found");
+  } else {
+    res.status(202).json(added);
+  }
+});
 
 
 
-const addToGroup = asyncHandler(async (req, res) => {});
+const removeFromGroup = asyncHandler(async (req, res) => {
+  const { chatId, userId } = req.body;
+  const removed = ChatModel.findByIdAndUpdate(
+    chatId,
+    { $pull: { users: userId } },
+    { new: true }
+  )
+    .populate("users", "-password")
+    .populate("groupAdmin", "-password");
+
+  if (!removed) {
+    res.status(404);
+    throw new Error("Chat Not Found");
+  } else {
+    res.status(202).json(removed);
+  }
+});
 
 
 

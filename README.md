@@ -65,8 +65,8 @@ __Backend__:
 | GET | /api/chats/ | This endpoint should allow to get the chats. | 200 |
 | POST | /api/chats/group | This endpoint should allow to create a group. | 201 |
 | PUT | /api/chats/rename | This endpoint should allow to create groups. | 202 |
-| PUT | /api/chats/groupremove | This endpoint should allow to remove someone from the group. | 202 |
 | PUT | /api/chats/groupadd | This endpoint should allow to add someone to the group. | 202 |
+| PUT | /api/chats/groupremove | This endpoint should allow to remove someone from the group. | 202 |
 
 
 

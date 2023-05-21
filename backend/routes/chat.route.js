@@ -20,11 +20,11 @@ chatRouter.route("/group").post(protect, createGroupChat);
 chatRouter.route("/rename").put(protect, renameGroup);
 
 
-// ! REMOVE FROM GROUP
-chatRouter.route("/groupremove").put(protect, removeFromGroup);
-
-
 // ! ADD TO GROUP
 chatRouter.route("/groupadd").put(protect, addToGroup);
+
+
+// ! REMOVE FROM GROUP
+chatRouter.route("/groupremove").put(protect, removeFromGroup);
 
 module.exports = chatRouter;
