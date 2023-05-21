@@ -57,17 +57,19 @@ const authUser = asyncHandler(async (req, res) => {
 });
 
 
-const allUser = asyncHandler(async (req, res) => {
+const allUsers = asyncHandler(async (req, res) => {
   const payload = req.query.search ? {
     $or: [
       {name: { $regex: req.query.search, $option: "i"}},
       {email: { $regex: req.query.search, $option: "i"}},
     ],
   } : {};
-  const users = (await UserModel.find(keyword)).find({_id: { $ne: req.user._id }});
+  const users = (await UserModel.find(payload)).find({
+    _id: { $ne: req.user._id },
+  });
   res.status(200).send(users)
 });
 
 
 
-module.exports = {registerUser, authUser};
+module.exports = { registerUser, authUser, allUsers };
