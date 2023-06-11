@@ -14,7 +14,7 @@ __QuickChat__ is a Full Stack Chatting App. Uses Socket.io for real time communi
 
 <br/>
 
-## 🏷️ __Tech Stack Used__ :-
+## 🏷️ __Tech Stack Used__ :-🔧
 
 __Frontend__:
 - HTML5
@@ -33,7 +33,7 @@ __Backend__:
 
 ## 🏷️ __Special Features of QuickChat__ :-
 
-- ### Authenticaton
+- ### Authenticaton 🔏
 <div style="display: flex; justify-content: space-evenly">
   <img width="48%" src="./screenshot/login.png" alt="Login"/>
   <img width="48%" src="./screenshot/signup.png" alt="Signup"/>
@@ -54,7 +54,7 @@ __Backend__:
 
 <br/>
 
-## 🏷️ __API Routes__ :
+## 🏷️ __API Routes__ : 🧭
 
 | METHOD | ENDPOINT | DESCRIPTION | STATUS CODE |
 | --- | --- | --- | --- |
@@ -70,7 +70,7 @@ __Backend__:
 
 
 
-## Run Locally
+## Run Locally 
 
 Clone the project
 
