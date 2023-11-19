@@ -59,15 +59,15 @@ __Backend:__
 
 | METHOD | ENDPOINT | BODY | DESCRIPTION | STATUS CODE |
 | --- | --- | --- | --- | --- |
-| POST | /api/register | __name__(Required), __email__(Required), __password__(Required), pic(Optional) | This endpoint should allow to register. Hash the password and store in MongoDB. | 201 |
-| POST | /api/login | __email__(Required), __password__(Required) | This endpoint should allow to login after comparing the user's credentails. | 201 |
+| POST | /api/register | __name__, __email__, __password__, pic(Optional) | This endpoint should allow to register. Hash the password and store in MongoDB. | 201 |
+| POST | /api/login | __email__, __password__ | This endpoint should allow to login after comparing the user's credentails. | 201 |
 | GET | /api/user |  | This endpoint should allow to search other users. | 200 |
 | GET | /api/chats/ |  | This endpoint should allow to get the chats. | 200 |
-| POST | /api/chats/ | __userId__(Required) | This endpoint should allow to send messages. | 201 |
-| POST | /api/chats/group | __users__(Required), __name__(Required) | This endpoint should allow to create a group. | 201 |
-| PUT | /api/chats/rename | __chatId__(Required), __chatName__(Required) | This endpoint should allow to rename a groups. | 202 |
-| PUT | /api/chats/groupadd | __chatId__(Required), __chatName__(Required) | This endpoint should allow to add people to the group. | 202 |
-| PUT | /api/chats/groupremove | __chatId__(Required), __chatName__(Required) | This endpoint should allow to remove someone from the group. | 202 |
+| POST | /api/chats/ | __userId__ | This endpoint should allow to send messages. | 201 |
+| POST | /api/chats/group | __users__, __name__ | This endpoint should allow to create a group. | 201 |
+| PUT | /api/chats/rename | __chatId__, __chatName__ | This endpoint should allow to rename a groups. | 202 |
+| PUT | /api/chats/groupadd | __chatId__, __chatName__ | This endpoint should allow to add people to the group. | 202 |
+| PUT | /api/chats/groupremove | __chatId__, __chatName__ | This endpoint should allow to remove someone from the group. | 202 |
 
 <!-- | GET | /api/chat/ |  | This endpoint should allow to get the chats. | 200 | -->
 
