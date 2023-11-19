@@ -4,18 +4,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-
-
 const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const toast = useToast();
   const history = useHistory();
-
-
 
   const submitHandler = async() => {
     setLoading(true);
@@ -41,7 +37,7 @@ const Login = () => {
           config
       );
       toast({
-        title: "Registration Successful",
+        title: "Login Successful",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -110,12 +106,12 @@ const Login = () => {
       >
         Get Guest User Credentials
       </Button>
-      {/* <Button
+      <Button
         colorScheme="teal"
         width="100%"
       >
         Forget Password ?
-      </Button> */}
+      </Button>
     </VStack>
   );
 };
