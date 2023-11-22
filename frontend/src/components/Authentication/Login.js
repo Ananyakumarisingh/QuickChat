@@ -1,4 +1,12 @@
-import { Button, Input, InputGroup, InputRightElement, useToast, FormControl, FormLabel } from "@chakra-ui/react";
+import {
+  Button,
+  Input,
+  InputGroup,
+  InputRightElement,
+  useToast,
+  FormControl,
+  FormLabel,
+} from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/layout";
 import React, { useState } from "react";
 import axios from "axios";
@@ -13,7 +21,7 @@ const Login = () => {
   const toast = useToast();
   const history = useHistory();
 
-  const submitHandler = async() => {
+  const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
       toast({
@@ -31,10 +39,11 @@ const Login = () => {
         headers: {
           "Content-type": "application/json",
         },
-      };    
+      };
       const { data } = await axios.post(
-        "/api/user/login", { email, password, },
-          config
+        "/api/user/login",
+        { email, password },
+        config
       );
       toast({
         title: "Login Successful",
@@ -57,7 +66,7 @@ const Login = () => {
       });
       setLoading(false);
     }
-  } 
+  };
 
   return (
     <VStack spacing="10px">
@@ -87,6 +96,16 @@ const Login = () => {
         </InputGroup>
       </FormControl>
       <Button
+        variant="link"
+        colorScheme="red"
+        width="100%"
+        style={{ marginTop: 10, fontSize: "small" }}
+        // onClick={resetPasswordHandler}
+        isLoading={loading}
+      >
+        Forgot your password?
+      </Button>
+      <Button
         colorScheme="blue"
         width="100%"
         style={{ marginTop: 15 }}
@@ -97,7 +116,7 @@ const Login = () => {
       </Button>
       <Button
         variant="solid"
-        colorScheme="red"
+        colorScheme="teal"
         width="100%"
         onClick={() => {
           setEmail("guest@example.com");
@@ -105,12 +124,6 @@ const Login = () => {
         }}
       >
         Get Guest User Credentials
-      </Button>
-      <Button
-        colorScheme="teal"
-        width="100%"
-      >
-        Forget Password ?
       </Button>
     </VStack>
   );
