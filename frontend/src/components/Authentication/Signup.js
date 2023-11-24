@@ -1,11 +1,8 @@
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
-import { Button, Input, InputGroup, InputRightElement, useToast } from "@chakra-ui/react";
-import { VStack } from "@chakra-ui/layout";
+import { Button, Input, InputGroup, InputRightElement, useToast, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
-
-
 
 const Signup = () => {
   const [show, setShow] = useState(false);

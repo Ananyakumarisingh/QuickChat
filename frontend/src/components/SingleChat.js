@@ -1,6 +1,6 @@
 import { FormControl, Input, Box, Text, IconButton, Spinner, useToast } from "@chakra-ui/react";
 // import { Input } from "@chakra-ui/input";
-// import { Box, Text } from "@chakra-ui/layout";
+// import { Box, Text } from "@chakra-ui/react";
 import "./styles.css";
 // import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";

@@ -6,26 +6,29 @@ import {
   useToast,
   FormControl,
   FormLabel,
+  VStack,
 } from "@chakra-ui/react";
-import { VStack } from "@chakra-ui/layout";
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { ChatState } from "../../Context/ChatProvider";
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState("");
   const toast = useToast();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
+  const { setUser } = ChatState();
 
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
       toast({
-        title: "Please fill all the feilds",
+        title: "Please Fill all the Feilds",
         status: "warning",
         duration: 5000,
         isClosable: true,
@@ -34,17 +37,20 @@ const Login = () => {
       setLoading(false);
       return;
     }
+
     try {
       const config = {
         headers: {
           "Content-type": "application/json",
         },
       };
+
       const { data } = await axios.post(
         "/api/user/login",
         { email, password },
         config
       );
+
       toast({
         title: "Login Successful",
         status: "success",
@@ -52,6 +58,7 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
+      setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       history.push("/chats");
@@ -88,7 +95,6 @@ const Login = () => {
             type={show ? "text" : "password"}
             placeholder="Enter password"
           />
-
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
               {show ? "Hide" : "Show"}
@@ -96,16 +102,6 @@ const Login = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
-      <Button
-        variant="link"
-        colorScheme="facebook"
-        width="100%"
-        style={{ marginTop: 10, fontSize: "small" }}
-        // onClick={resetPasswordHandler}
-        // isLoading={loading}
-      >
-        Forgot your password?
-      </Button>
       <Button
         colorScheme="blue"
         width="100%"
@@ -117,7 +113,7 @@ const Login = () => {
       </Button>
       <Button
         variant="solid"
-        colorScheme="teal"
+        colorScheme="red"
         width="100%"
         onClick={() => {
           setEmail("guest@example.com");
