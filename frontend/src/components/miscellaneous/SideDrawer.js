@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -162,38 +161,35 @@ const SideDrawer = () => {
           </Menu>
         </div>
       </Flex>
-
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
-          </DrawerContent>
-        </DrawerOverlay>
-        <DrawerBody>
-          <Text>Hiii</Text>
-          <Box d="flex" pb={2}>
-            <Input
-              placeholder="Search by name or email"
-              mr={2}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <Button onClick={handleSearch}>Go</Button>
-          </Box>
-          {loading ? (
-            <ChatLoading />
-          ) : (
-            searchResult?.map((user) => (
-              <UserListItem
-                key={user._id}
-                user={user}
-                handleFunction={() => accessChat(user._id)}
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
+          <DrawerBody>
+            <Flex pb={2}>
+              <Input
+                placeholder="Search by name or email"
+                mr={2}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
-            ))
-          )}
-          {loadingChat && <Spinner ml="auto" d="flex" />}
-        </DrawerBody>
-      </Drawer>
+              <Button onClick={handleSearch}>Go</Button>
+            </Flex>
+            {loading ? (
+              <ChatLoading />
+            ) : (
+              searchResult?.map((user) => (
+                <UserListItem
+                  key={user._id}
+                  user={user}
+                  handleFunction={() => accessChat(user._id)}
+                />
+              ))
+            )}
+            {loadingChat && <Spinner ml="auto" display="flex" />}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>{" "}
     </>
   );
 };

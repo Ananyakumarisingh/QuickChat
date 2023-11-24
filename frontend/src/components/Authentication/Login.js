@@ -88,6 +88,7 @@ const Login = () => {
             type={show ? "text" : "password"}
             placeholder="Enter password"
           />
+
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
               {show ? "Hide" : "Show"}
@@ -97,11 +98,11 @@ const Login = () => {
       </FormControl>
       <Button
         variant="link"
-        colorScheme="red"
+        colorScheme="facebook"
         width="100%"
         style={{ marginTop: 10, fontSize: "small" }}
         // onClick={resetPasswordHandler}
-        isLoading={loading}
+        // isLoading={loading}
       >
         Forgot your password?
       </Button>
