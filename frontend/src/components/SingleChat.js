@@ -1,8 +1,6 @@
 import { FormControl, Input, Box, Text, IconButton, Spinner, useToast } from "@chakra-ui/react";
-// import { Input } from "@chakra-ui/input";
-// import { Box, Text } from "@chakra-ui/react";
+// import { Box, Text, Input, IconButton, Spinner, useToast } from "@chakra-ui/react";
 import "./styles.css";
-// import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -13,7 +11,7 @@ import Lottie from "react-lottie";
 // import animationData from "../animations/typing.json";
 
 import io from "socket.io-client";
-import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
+import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal.js";
 import { ChatState } from "../Context/ChatProvider";
 const ENDPOINT = "http://localhost:5000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 var socket, selectedChatCompare;
